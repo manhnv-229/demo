@@ -1,0 +1,26 @@
+﻿
+body{
+    margin:0 auto;
+    display:flex;
+}
+/*Menu*/
+.menu {
+    background-color: #1c2c4e;
+    width:200px;
+    height:100vh;
+}
+
+/*Content*/
+.content{
+    width:100%;
+    height:100vh;
+}
+
+    .content .header-content {
+        height: 50px;
+        width: 100%;
+        border: 1px solid #1c2c4e;
+    }
+    .content .body-content {
+        width: 100%;
+    }

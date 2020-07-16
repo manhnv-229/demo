@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.DL;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql.Storage;
 
 namespace MISA.Demo2
 {
@@ -26,7 +30,11 @@ namespace MISA.Demo2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ILoginService, LoginService>();
+            services.AddDbContext<DemoContext>(options => options
+               .UseMySql("server=35.194.166.58;port=3306;user=nvmanh;password=12345678@Abc;database=MISADemo_NVMANH",
+                   mysqlOptions =>
+                       mysqlOptions.ServerVersion(new ServerVersion(new Version(10, 4, 6), ServerType.MariaDb))));
+            services.AddSingleton<ILoginService, Login2>();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
         }

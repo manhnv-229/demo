@@ -5,57 +5,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MISA.BL;
 using MISA.Demo2.Models;
+using MISA.Entity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MISA.Demo2.Controllers
 {
-    [Route("api/v1/[controller]")]
-    [ApiController]
-    public class EmployeesController : ControllerBase
+    public class EmployeesController : BaseController<Employee>
     {
-        private readonly EmployeeBL _employeeBL;
-
-        public EmployeesController()
+        public override ActionResult<IEnumerable<Employee>> GetData()
         {
-            _employeeBL = new EmployeeBL();
+            EmployeeBL employeeBL = new EmployeeBL();
+            return Ok(employeeBL.GetTop10(10));
         }
+
         /// <summary>
-        /// Lấy danh sách nhân viên
+        /// Lấy các bản ghi đầu tiên theo tham số truyền vào
         /// </summary>
+        /// <param name="limitTop">số lượng bản ghi muốn lấy</param>
         /// <returns></returns>
-        /// CreatedBy: NVMANH (03/07/2020)
-        [HttpGet]
-        public ActionResult<IEnumerable<Employee>> Get()
+        /// CreatedBy: NVMANH (22/07/2020)
+        [HttpGet("filter")]
+        public IEnumerable<Employee> GetTop10([FromQuery]int limitTop)
         {
-            return Ok(_employeeBL.GetEmployees());
+            EmployeeBL employeeBL = new EmployeeBL();
+            return employeeBL.GetTop10(limitTop);
         }
-
-        //[HttpGet("search")]
-        //public IActionResult GetEmployeeByCode([FromBody]string employeeCode, [FromQuery] int code)
-        //{
-        //    var employee = Entity.ListEmployees.Where(emp => emp.EmployeeCode == employeeCode).FirstOrDefault();
-        //    return Ok(employee);
-        //}
-
-        //[HttpPost]
-        //public IActionResult AddEmployee([FromBody] Employee employee)
-        //{
-        //    Entity.ListEmployees.Add(employee);
-        //    return BadRequest(true);
-
-        //}
-
-        //// PUT api/<EmployeesController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<EmployeesController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MISA.Entity
 {
-    public partial class Position
+    public partial class Position:BaseEntity
     {
         public Position()
         {

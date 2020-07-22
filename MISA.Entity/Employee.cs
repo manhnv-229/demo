@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MISA.Entity
 {
-    public partial class Employee
+    public partial class Employee : BaseEntity
     {
         public Guid EmployeeId { get; set; }
         public string EmployeeCode { get; set; }

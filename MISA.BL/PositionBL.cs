@@ -6,12 +6,8 @@ using System.Text;
 
 namespace MISA.BL
 {
-    public class PositionBL
+    public class PositionBL:BaseBL<Position>
     {
-        public IEnumerable<Position> GetPositions()
-        {
-            PositionDL positionDL = new PositionDL();
-            return positionDL.GetPositions();
-        }
+       
     }
 }

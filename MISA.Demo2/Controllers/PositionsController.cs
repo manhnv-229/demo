@@ -10,26 +10,8 @@ using MISA.Entity;
 
 namespace MISA.Demo2.Controllers
 {
-    [Route("api/v1/[controller]")]
-    [ApiController]
-    public class PositionsController : ControllerBase
+    public class PositionsController : BaseController<Position>
     {
-        private readonly PositionBL _positionBL;
-
-        public PositionsController()
-        {
-            _positionBL = new PositionBL();
-        }
-
-        // GET: api/Positions
-        [HttpGet]
-        public ActionResult<IEnumerable<Position>> GetPosition()
-        {
-            var positions = _positionBL.GetPositions();
-            return Ok(positions);
-            //return await _context.Position.ToListAsync();
-        }
-
         // GET: api/Positions/5
         //[HttpGet("{id}")]
         //public async Task<ActionResult<Position>> GetPosition(Guid id)

@@ -6,12 +6,8 @@ using System.Text;
 
 namespace MISA.DL
 {
-    public class PositionDL
+    public class PositionDL: BaseDL<Position>
     {
-        public IEnumerable<Position> GetPositions()
-        {
-            DemoContext demoContext = new DemoContext();
-            return demoContext.Position.ToList();
-        }
+        
     }
 }

@@ -6,12 +6,17 @@ using System.Text;
 
 namespace MISA.DL
 {
-    public class EmployeeDL
+    public class EmployeeDL:BaseDL<Employee>
     {
-        public IEnumerable<Employee> GetEmployees()
+        /// <summary>
+        /// Lấy các bản ghi đầu tiên theo tham số truyền vào
+        /// </summary>
+        /// <param name="limitTop">số lượng bản ghi muốn lấy</param>
+        /// <returns></returns>
+        /// CreatedBy: NVMANH (22/07/2020)
+        public IEnumerable<Employee> GetTop10(int limitTop)
         {
-            DemoContext demoContext = new DemoContext();
-            return demoContext.Employee.ToList();
+            return GetData().ToList().Take(limitTop);
         }
     }
 }

@@ -11,7 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.BL;
+using MISA.BL.Interfaces;
 using MISA.DL;
+using MISA.DL.DatabaseContext;
+using MISA.DL.Interfaces;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 
@@ -37,6 +41,12 @@ namespace MISA.Demo2
             services.AddSingleton<ILoginService, Login2>();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
+            services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL2<>));
+            services.AddScoped<IEmployeeBL, EmployeeBL>();
+            services.AddScoped<IPositionBL, PositionBL>();
+            services.AddScoped<IEmployeeDL, EmployeeDL>();
+            services.AddScoped<IPositionDL, PositionDL>();
+            services.AddScoped<IDatabaseContext, NewDatabaseContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

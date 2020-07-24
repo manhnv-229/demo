@@ -1,4 +1,5 @@
-﻿using MISA.Entity;
+﻿using MISA.DL.Interfaces;
+using MISA.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,12 @@ using System.Text;
 
 namespace MISA.DL
 {
-    public class EmployeeDL:BaseDL<Employee>
+    public class EmployeeDL:BaseDL<Employee>,IEmployeeDL
     {
+        public EmployeeDL(IDatabaseContext databaseContext) : base(databaseContext)
+        {
+
+        }
         /// <summary>
         /// Lấy các bản ghi đầu tiên theo tham số truyền vào
         /// </summary>

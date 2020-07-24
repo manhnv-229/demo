@@ -6,12 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MISA.BL;
+using MISA.BL.Interfaces;
 using MISA.Entity;
 
 namespace MISA.Demo2.Controllers
 {
     public class PositionsController : BaseController<Position>
     {
+        public PositionsController(IPositionBL positionBL) : base(positionBL)
+        {
+
+        }
         // GET: api/Positions/5
         //[HttpGet("{id}")]
         //public async Task<ActionResult<Position>> GetPosition(Guid id)

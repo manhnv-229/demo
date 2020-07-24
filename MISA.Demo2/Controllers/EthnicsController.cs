@@ -9,7 +9,7 @@ using MISA.Entity;
 namespace MISA.Demo2.Controllers
 {
     
-    public class EthnicsController : BaseController<Ethnic>
-    {
-    }
+    //public class EthnicsController : BaseController<Ethnic>
+    //{
+    //}
 }
